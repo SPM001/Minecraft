@@ -69,6 +69,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet()); // Set security-related HTTP headers
+app.use(cors({
+    origin: 'https://github.com/SPM001/Minecraft.git', // Replace with actual front-end URL
+    credentials: true
+}));
 
 // Session management with MongoDB
 // Session management with MongoDB store
