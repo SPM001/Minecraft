@@ -69,10 +69,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet()); // Set security-related HTTP headers
-app.use(cors({
-    origin: 'https://github.com/SPM001/Minecraft.git', // Replace with actual front-end URL
-    credentials: true
-}));
 
 // Session management with MongoDB
 // Session management with MongoDB store
@@ -82,7 +78,7 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: mongoUri }), // Use your MongoDB URI
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // Set to true if you're using HTTPS
+        secure: true, // Set to true if you're using HTTPS
         httpOnly: true,
         sameSite: 'lax',
         maxAge: 30 * 60 * 1000 // Session expires after 30 minutes
