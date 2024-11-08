@@ -78,7 +78,7 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: mongoUri }), // Use your MongoDB URI
     cookie: {
-        secure: false, // Set to true if you're using HTTPS
+        secure: process.env.NODE_ENV === 'production', // Set to true if you're using HTTPS
         httpOnly: true,
         sameSite: 'lax',
         maxAge: 30 * 60 * 1000 // Session expires after 30 minutes
