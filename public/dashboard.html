@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN link -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <title>Minecraft Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <span class="navbar-title">Minecraft</span>
+        <ul class="center-menu">
+            <li><a href="#blocks">Blocks</a></li>
+            <li><a href="#mobs">Mobs</a></li>
+            <li><a href="#biomes">Biomes</a></li>
+            <li><a href="#mods">Mods</a></li> 
+            <li><a href="#youtubers">YouTubers</a></li>
+        </ul>
+        <button id="darkModeToggle" class="navbar-dark-mode-toggle">🌙</button> <!-- Dark Mode Toggle Button -->
+       <!-- Logout Button with Door Icon -->
+       <button id="logoutButton" class="navbar-logout">
+        <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome Logout Icon -->
+    
+    </button>
+
+
+    </nav>
+
+   
+    
+    <main class="main-content">
+        <div class="sidebar-welcome">
+            <h1><span id="user-email">[User's Email]</span></h1>
+        </div>
+        <h1>Welcome to the Minecraft Dashboard</h1>
+        <p>Select a category from the menu to explore more.</p>
+
+        <!-- Blocks Section -->
+        <section id="blocks" class="content-section">
+            <h2>Blocks</h2>
+            <p>Blocks are the basic building units of Minecraft. Players can gather and place these blocks to create structures and landscapes.</p>
+            <div class="grid-container">
+                <div class="grid-item" onclick="toggleDescription('dirtDesc')">
+                    <img src="images/dirt.png" alt="Dirt" class="block-image">
+                    <span class="block-name">Dirt</span>
+                    <p id="dirtDesc" class="block-description">Common block found everywhere, useful for farming.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('stoneDesc')">
+                    <img src="images/stone.png" alt="Stone" class="block-image">
+                    <span class="block-name">Stone</span>
+                    <p id="stoneDesc" class="block-description">Durable block used for building and crafting.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('woodDesc')">
+                    <img src="images/wood.png" alt="Wood" class="block-image">
+                    <span class="block-name">Wood</span>
+                    <p id="woodDesc" class="block-description">Versatile block, can be crafted into planks and tools.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('sandDesc')">
+                    <img src="images/sand.webp" alt="Sand" class="block-image">
+                    <span class="block-name">Sand</span>
+                    <p id="sandDesc" class="block-description">Used to craft glass and create beaches.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('glassDesc')">
+                    <img src="images/glass.webp" alt="Glass" class="block-image">
+                    <span class="block-name">Glass</span>
+                    <p id="glassDesc" class="block-description">Translucent block used for windows and decoration.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('lapisDesc')">
+                    <img src="images/lapis.webp" alt="Lapis Lazuli" class="block-image">
+                    <span class="block-name">Lapis Lazuli</span>
+                    <p id="lapisDesc" class="block-description">Beautiful blue block used for dyeing and enchanting.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('goldDesc')">
+                    <img src="images/gold.png" alt="Gold Ore" class="block-image">
+                    <span class="block-name">Gold Ore</span>
+                    <p id="goldDesc" class="block-description">Valuable block that can be mined for gold ingots.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('diamondDesc')">
+                    <img src="images/diamond.png" alt="Diamond Ore" class="block-image">
+                    <span class="block-name">Diamond Ore</span>
+                    <p id="diamondDesc" class="block-description">Rare block used to craft the strongest tools and armor.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('obsidianDesc')">
+                    <img src="images/obsidian.png" alt="Obsidian" class="block-image">
+                    <span class="block-name">Obsidian</span>
+                    <p id="obsidianDesc" class="block-description">Extremely durable block, used to create Nether portals.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Mobs Section -->
+        <section id="mobs" class="content-section">
+            <h2>Mobs</h2>
+            <p>Mobs are creatures in Minecraft that players can encounter, some are hostile while others are friendly or neutral.</p>
+            <div class="grid-container">
+                <!-- Hostile Mobs -->
+                <div class="grid-item" onclick="toggleDescription('zombieDesc')">
+                    <img src="images/zombie.webp" alt="Zombie" class="mob-image">
+                    <span class="mob-name">Zombie</span>
+                    <p id="zombieDesc" class="mob-description">Classic hostile mob, groaning and chasing players in the dark.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('creeperDesc')">
+                    <img src="images/creeper.webp" alt="Creeper" class="mob-image">
+                    <span class="mob-name">Creeper</span>
+                    <p id="creeperDesc" class="mob-description">Silent and explosive, ready to sneak up on you and blow up!</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('skeletonDesc')">
+                    <img src="images/skeleton.webp" alt="Skeleton" class="mob-image">
+                    <span class="mob-name">Skeleton</span>
+                    <p id="skeletonDesc" class="mob-description">Bow-wielding mob, ready to shoot arrows at unsuspecting players.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('spiderDesc')">
+                    <img src="images/spider.webp" alt="Spider" class="mob-image">
+                    <span class="mob-name">Spider</span>
+                    <p id="spiderDesc" class="mob-description">Creepy crawler that attacks at night and climbs walls.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('endermanDesc')">
+                    <img src="images/enderman.webp" alt="Enderman" class="mob-image">
+                    <span class="mob-name">Enderman</span>
+                    <p id="endermanDesc" class="mob-description">Mysterious and teleporting, don’t stare them in the eyes!</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('witchDesc')">
+                    <img src="images/witch.webp" alt="Witch" class="mob-image">
+                    <span class="mob-name">Witch</span>
+                    <p id="witchDesc" class="mob-description">Potion-wielding menace, ready to poison and slow you down.</p>
+                </div>
+                
+                <!-- Friendly Mobs -->
+                <div class="grid-item" onclick="toggleDescription('cowDesc')">
+                    <img src="images/cow.webp" alt="Cow" class="mob-image">
+                    <span class="mob-name">Cow</span>
+                    <p id="cowDesc" class="mob-description">Provides milk and beef, grazing peacefully in the fields.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('sheepDesc')">
+                    <img src="images/sheep.webp" alt="Sheep" class="mob-image">
+                    <span class="mob-name">Sheep</span>
+                    <p id="sheepDesc" class="mob-description">Fluffy and cute, great for wool and beds.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('chickenDesc')">
+                    <img src="images/chicken.webp" alt="Chicken" class="mob-image">
+                    <span class="mob-name">Chicken</span>
+                    <p id="chickenDesc" class="mob-description">Lays eggs and clucks around, perfect for a food source.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('pigDesc')">
+                    <img src="images/pig.webp" alt="Pig" class="mob-image">
+                    <span class="mob-name">Pig</span>
+                    <p id="pigDesc" class="mob-description">Friendly animal that can be bred for food and ridden with a saddle.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('horseDesc')">
+                    <img src="images/horse.webp" alt="Horse" class="mob-image">
+                    <span class="mob-name">Horse</span>
+                    <p id="horseDesc" class="mob-description">Fast and rideable, great for traveling across the land.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('catDesc')">
+                    <img src="images/cat.webp" alt="Cat" class="mob-image">
+                    <span class="mob-name">Cat</span>
+                    <p id="catDesc" class="mob-description">Cute and independent, can be tamed to scare away creepers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biomes Section -->
+        <section id="biomes" class="content-section">
+            <h2>Biomes</h2>
+            <p>Biomes are regions in the Minecraft world, each with unique climates, vegetation, and creatures. Explore to discover them all!</p>
+            <div class="grid-container">
+                <div class="grid-item" onclick="toggleDescription('plainsDesc')">
+                    <img src="images/plains.webp" alt="Plains" class="biome-image">
+                    <span class="biome-name">Plains</span>
+                    <p id="plainsDesc" class="biome-description">Open fields with plenty of grass and flowers, perfect for building.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('desertDesc')">
+                    <img src="images/desert.webp" alt="Desert" class="biome-image">
+                    <span class="biome-name">Desert</span>
+                    <p id="desertDesc" class="biome-description">A dry and barren biome, filled with cacti and sandy dunes.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('mushroomDesc')">
+                    <img src="images/mushroom.webp" alt="Mushsroom Field" class="biome-image">
+                    <span class="biome-name">Mushroom Field</span>
+                    <p id="mushroomDesc" class="biome-description"> A vibrant biome featuring towering mushrooms and purple grass, home to mooshroom cows.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('jungleDesc')">
+                    <img src="images/jungle.webp" alt="Jungle" class="biome-image">
+                    <span class="biome-name">Jungle</span>
+                    <p id="jungleDesc" class="biome-description">Dense vegetation with tall trees, home to ocelots and parrots.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('savannaDesc')">
+                    <img src="images/savanna.webp" alt="Savanna" class="biome-image">
+                    <span class="biome-name">Savanna</span>
+                    <p id="savannaDesc" class="biome-description">Flatlands with acacia trees and herds of animals.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('taigaDesc')">
+                    <img src="images/taiga.webp" alt="Taiga" class="biome-image">
+                    <span class="biome-name">Taiga</span>
+                    <p id="taigaDesc" class="biome-description">Cold, forested area with wolves and berry bushes.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('swampDesc')">
+                    <img src="images/swamp.jpg" alt="Swamp" class="biome-image">
+                    <span class="biome-name">Swamp</span>
+                    <p id="swampDesc" class="biome-description">Wetlands filled with lily pads, frogs, and murky water.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('cherryDesc')">
+                    <img src="images/cherry.webp" alt="Cherry Grove" class="biome-image">
+                    <span class="biome-name">Cherry Grove</span>
+                    <p id="cherryDesc" class="biome-description">A serene biome adorned with blooming cherry blossom trees, offering a tranquil atmosphere and vibrant pink scenery.</p>
+                </div>
+                <div class="grid-item" onclick="toggleDescription('netherDesc')">
+                    <img src="images/netherw.webp" alt="Nether" class="biome-image">
+                    <span class="biome-name">Nether</span>
+                    <p id="netherDesc" class="biome-description">Fiery dimension filled with unique mobs and resources.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Mods Section -->
+<section id="mods" class="content-section mods-section">
+    <h2>Mods</h2>
+    <p>Mods are modifications that change or enhance gameplay in Minecraft.</p>
+    <div class="mods-grid-container">
+        <div class="mod-item">
+            <img src="images/of.jpg" alt="OptiFine" class="mod-image">
+            <h3 class="mod-name">OptiFine</h3>
+            <p class="mod-description">Enhances graphics and performance, allowing for customizable settings.</p>
+            <button class="download-button" onclick="downloadMod('OptiFine')">Download</button>
+        </div>
+        <div class="mod-item">
+            <img src="images/jmap.png" alt="JourneyMap" class="mod-image">
+            <h3 class="mod-name">JourneyMap</h3>
+            <p class="mod-description">A detailed map mod that tracks your locations and waypoints.</p>
+            <button class="download-button" onclick="downloadMod('JourneyMap')">Download</button>
+        </div>
+        <div class="mod-item">
+            <img src="images/bop.jpg" alt="Biomes O' Plenty" class="mod-image">
+            <h3 class="mod-name">Biomes O' Plenty</h3>
+            <p class="mod-description">Adds a plethora of new biomes and plants for exploration.</p>
+            <button class="download-button" onclick="downloadMod('Biomes O\' Plenty')">Download</button>
+        </div>
+        <div class="mod-item">
+            <img src="images/twilight.jpg" alt="Twilight Forest" class="mod-image">
+            <h3 class="mod-name">Twilight Forest</h3>
+            <p class="mod-description">A magical realm filled with new adventures and bosses.</p>
+            <button class="download-button" onclick="downloadMod('Twilight Forest')">Download</button>
+        </div>
+        <div class="mod-item">
+            <img src="images/tinker.png" alt="Tinkers' Construct" class="mod-image">
+            <h3 class="mod-name">Tinkers' Construct</h3>
+            <p class="mod-description">A brand new approach to crafting and enhancing tools and weapons.</p>
+            <button class="download-button" onclick="downloadMod('Tinkers\' Construct')">Download</button>
+        </div>
+        <div class="mod-item">
+            <img src="images/pixelmon.webp" alt="Pixelmon" class="mod-image">
+            <h3 class="mod-name">Pixelmon</h3>
+            <p class="mod-description">Brings Pokémon into Minecraft, allowing for battles and adventures.</p>
+            <button class="download-button" onclick="downloadMod('Pixelmon')">Download</button>
+        </div>
+    </div>
+</section>
+<section id="youtubers" class="content-section">
+    <h2>YouTubers</h2>
+    <p>Check out these Minecraft YouTubers for tips, tricks, and entertaining content!</p>
+    <div class="grid-container">
+        <!-- Dream -->
+        <div class="grid-item" onclick="toggleDescription('dreamDesc')">
+            <img src="images/dream.jpg" alt="Dream" class="youtuber-image">
+            <span class="youtuber-name">Dream</span>
+            <p id="dreamDesc" class="youtuber-description">Famous for his Minecraft speedruns and the Dream SMP series.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@dream" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Technoblade -->
+        <div class="grid-item" onclick="toggleDescription('technobladeDesc')">
+            <img src="images/technoblade.jpg" alt="Technoblade" class="youtuber-image">
+            <span class="youtuber-name">Technoblade</span>
+            <p id="technobladeDesc" class="youtuber-description">Known for his PvP skills and legendary Minecraft moments.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@Technoblade" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Sword4000 -->
+        <div class="grid-item" onclick="toggleDescription('sword4000Desc')">
+            <img src="images/sword4000.jpg" alt="Sword4000" class="youtuber-image">
+            <span class="youtuber-name">Sword4000</span>
+            <p id="sword4000Desc" class="youtuber-description">Sword4000 is known for his entertaining Minecraft series and community events.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@Sword4000" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Ethos Lab -->
+        <div class="grid-item" onclick="toggleDescription('ethoslabDesc')">
+            <img src="images/ethoslab.jpg" alt="Ethos Lab" class="youtuber-image">
+            <span class="youtuber-name">Ethos Lab</span>
+            <p id="ethoslabDesc" class="youtuber-description">Ethos Lab is a Minecraft veteran, known for his creative builds and survival adventures.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@EthosLab" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Filza -->
+        <div class="grid-item" onclick="toggleDescription('filzaDesc')">
+            <img class="youtuber-image" src="images/philza.jpg" alt="Filza">
+            <div class="youtuber-name">Ph1LzA</div>
+            <p id="filzaDesc" class="youtuber-description">Filza is known for his Minecraft survival series and impressive building skills!</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@ph1lza" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Mumbo Jumbo -->
+        <div class="grid-item" onclick="toggleDescription('mumboDesc')">
+            <img class="youtuber-image" src="images/mumbo.jpg" alt="Mumbo Jumbo">
+            <div class="youtuber-name">Mumbo Jumbo</div>
+            <p id="mumboDesc" class="youtuber-description">Mumbo Jumbo is famous for his redstone tutorials and fun Minecraft challenges.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@ThatMumboJumbo" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Grian -->
+        <div class="grid-item" onclick="toggleDescription('grianDesc')">
+            <img class="youtuber-image" src="images/grian.jpg" alt="Grian">
+            <div class="youtuber-name">Grian</div>
+            <p id="grianDesc" class="youtuber-description">Grian is a creative Minecraft player known for his building tutorials and humorous videos.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@Grian" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- Stampy Longnose -->
+        <div class="grid-item" onclick="toggleDescription('stampyDesc')">
+            <img class="youtuber-image" src="images/stampy.jpg" alt="Stampy Longnose">
+            <div class="youtuber-name">Stampylonghead</div>
+            <p id="stampyDesc" class="youtuber-description">Stampy is known for his family-friendly Minecraft series and adventures in the world of his "Lovely World".</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@stampycat" target="_blank">Visit Channel</a>
+        </div>
+
+        <!-- DanTDM -->
+        <div class="grid-item" onclick="toggleDescription('dantdmDesc')">
+            <img class="youtuber-image" src="images/dantdm.jpg" alt="DanTDM">
+            <div class="youtuber-name">DanTDM</div>
+            <p id="dantdmDesc" class="youtuber-description">DanTDM is one of the most popular Minecraft YouTubers, known for his Let's Play videos and mod showcases.</p>
+            <a class="youtuber-link" href="https://www.youtube.com/@DanTDM" target="_blank">Visit Channel</a>
+        </div>
+    </div>
+</section>
+
+
+    </main>
+
+    <script>
+        function downloadMod(modName) {
+            alert(`Sorry, the download for ${modName} is not available.`);
+        }
+    
+        function toggleDescription(id) {
+            const element = document.getElementById(id);
+            element.style.display = element.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        // Logout button functionality
+        document.getElementById('logoutButton').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                });
+    
+                const result = await response.json();
+    
+                if (result.success) {
+                    window.location.href = '/index.html'; // Redirect to login or home page
+                } else {
+                    alert(result.message || 'Failed to logout');
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('An error occurred while logging out');
+            }
+        });
+    
+        // Fetch user details when the page loads
+        document.addEventListener('DOMContentLoaded', fetchUserDetails);
+    
+        async function fetchUserDetails() {
+            try {
+                const response = await fetch('/user-details', { credentials: 'include' });
+                const data = await response.json();
+    
+                if (data.success) {
+                    console.log('User email:', data.user.email); // Log user email to console
+                    document.getElementById('user-email').textContent = `Hello, ${data.user.email}!`; // Display the email
+                } else {
+                    console.error('Failed to fetch user details:', data.message);
+                    alert(data.message || 'Failed to retrieve user details. Please log in again.');
+                    window.location.href = '/index.html'; // Redirect to login if unauthorized
+                }
+            } catch (error) {
+                console.error('Error fetching user details:', error);
+                alert('An error occurred while fetching user details');
+            }
+        }
+        // Toggle dark mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            // Update the icon to represent the mode
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+        });
+    </script>
+</body>
+</html>

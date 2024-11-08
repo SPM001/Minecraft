@@ -1,0 +1,138 @@
+/* General styling */
+body {
+    font-family: 'Minecraftia', sans-serif;
+    background-image: url('images/minecraft.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: #f0e68c;
+    text-shadow: 1px 1px #2f4f4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Form container for Reset Password */
+.form-container {
+    text-align: center;
+    background-color: rgba(34, 139, 34, 0.85);
+    padding: 30px;
+    border: 2px solid #8b4513;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    animation: slideIn 1s ease-out;
+}
+
+/* Header */
+h2 {
+    font-size: 2.5em;
+    color: #f0e68c;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px #2f4f4f;
+}
+
+/* Form label styling */
+.form-container label {
+    font-size: 1.2em;
+    color: #f5deb3;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Uniform input fields for reset code and passwords */
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Make input fields fill the container */
+    max-width: 100%; /* Ensure the width does not exceed the container width */
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #8b4513;
+    border-radius: 4px;
+    background-color: #f5deb3;
+    color: #333;
+    font-size: 1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+}
+
+/* Ensures that password and reset code fields maintain consistent styling */
+input[type="text"]:hover, input[type="password"]:hover, 
+input[type="text"]:focus, input[type="password"]:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(34, 139, 34, 0.8);
+}
+
+/* Password input container (with eye icon) */
+.password-container {
+    position: relative;
+    width: 100%; /* Make the password container the same width as input */
+}
+
+/* Eye icon for toggling visibility */
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black; /* Set the eye icon color to black */
+}
+
+/* Submit button */
+button {
+    background-color: #228b22;
+    color: #f0e68c;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #32cd32;
+    transform: scale(1.05);
+}
+
+/* Link for going back to forgot password page */
+a {
+    color: #87ceeb;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ffa500;
+    text-decoration: underline;
+}
+
+/* Alert message for validation errors */
+#alertReset {
+    color: #ff6347;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+/* Keyframe animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

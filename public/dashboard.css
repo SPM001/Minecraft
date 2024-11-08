@@ -1,0 +1,378 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Default Body Styling */
+body {
+    font-family: 'Press Start 2P', cursive; /* Use a pixelated font */
+    background-color: #e0e0e0; /* Slightly darker background for contrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Keep navbar at the top */
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text in dark mode */
+}
+
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b1b1b;
+    padding: 15px 30px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Keep navbar on top */
+}
+
+/* Space between dark mode toggle and logout */
+.navbar .dark-mode-toggle {
+    margin-right: 20px; /* Adds space between dark mode toggle and logout */
+}
+
+/* Dark Mode Navbar */
+body.dark-mode .navbar {
+    background-color: #333;
+}
+
+.navbar-title {
+    font-size: 28px; /* Slightly larger for prominence */
+    font-weight: bold;
+    color: #00ff00; /* Bright green like grass */
+}
+
+/* Dark Mode Navbar Title */
+body.dark-mode .navbar-title {
+    color: #00ff00; /* Maintain bright green title in dark mode */
+}
+
+.center-menu {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0 auto;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.center-menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+/* Dark Mode Links */
+body.dark-mode .center-menu li a {
+    color: #ffffff;
+}
+
+.center-menu li a:hover {
+    color: #00ff00; /* Green for hover effect */
+}
+
+/* Dark Mode Hover */
+body.dark-mode .center-menu li a:hover {
+    color: #00ff00;
+}
+
+/* Logout Icon */
+.navbar-logout {
+    background: none;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Adds spacing between the icon and text */
+}
+
+/* Add more space between dark mode and logout button */
+.navbar .navbar-logout {
+    margin-left: 20px; /* Adds space between dark mode toggle and logout */
+}
+
+.navbar-logout svg {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff; /* White icon color */
+}
+
+.navbar-logout:hover {
+    color: #00ff00; /* Hover color */
+}
+
+/* Dark Mode Logout Icon */
+body.dark-mode .navbar-logout svg {
+    fill: #ffffff; /* White icon in dark mode */
+}
+
+/* Expanded main content */
+.main-content {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; /* Expanded to occupy more width */
+    max-width: 1200px; /* Maximum width for larger screens */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Section styling */
+.content-section {
+    width: 100%; /* Full width within main-content */
+    margin: 40px 0;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Dark Mode Section Styling */
+body.dark-mode .content-section {
+    background-color: #333;
+    color: #ffffff;
+}
+
+h2 {
+    color: #00ff00; /* Bright green for headings */
+    margin-bottom: 10px;
+    font-size: 24px; /* Increase size for headings */
+}
+
+/* Dark Mode Headings */
+body.dark-mode h2 {
+    color: #00ff00; /* Green headings */
+}
+
+/* Mobs, Blocks, and Biomes grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px; /* Increased gap for spacing */
+    margin-top: 20px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Grid Items */
+body.dark-mode .grid-item {
+    background-color: #444; /* Darker background in grid */
+    color: #ffffff; /* Light text */
+}
+
+/* Set fixed size for mobs and blocks */
+.mob-image, .block-image {
+    width: 150px;  /* Fixed width for mobs and blocks */
+    height: 150px; /* Fixed height for mobs and blocks */
+    object-fit: contain; /* Use contain to show the entire image */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* Increase size for biome images */
+.biome-image {
+    width: 200px;  /* Larger width for biomes */
+    height: 200px; /* Larger height for biomes */
+    object-fit: cover; /* Use contain to show the entire image */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* Dark Mode Mobs/Blocks/Biomes */
+body.dark-mode .mob-image, 
+body.dark-mode .block-image, 
+body.dark-mode .biome-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Update descriptions to fit the Minecraft theme */
+.mob-description, .biome-description, .block-description {
+    display: none; /* Initially hidden */
+    margin-top: 5px;
+    font-style: italic;
+    color: #333; /* Darker for better contrast */
+    text-align: center;
+    font-family: 'Press Start 2P', cursive; /* Keep font consistent */
+}
+
+/* Dark Mode Descriptions */
+body.dark-mode .mob-description,
+body.dark-mode .biome-description,
+body.dark-mode .block-description,
+body.dark-mode .youtuber-description {
+    color: #ffffff; /* White text for descriptions in dark mode */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mods Section Styling */
+.mods-section {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Mods Section */
+body.dark-mode .mods-section {
+    background-color: #333; /* Darker background */
+    color: #ffffff; /* Light text */
+}
+
+.mods-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.mod-item {
+    background-color: #fff; /* White background for each mod */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Dark Mode Mod Items */
+body.dark-mode .mod-item {
+    background-color: #444; /* Darker background */
+    color: #fff; /* Light text */
+}
+
+.mod-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mod-image {
+    width: 100px; /* Full width */
+    height: 100px;
+    border-radius: 5px;
+}
+
+.mod-name {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+
+.mod-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.download-button {  
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Dark Mode Download Button */
+body.dark-mode .download-button {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.download-button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+.footer {
+    background-color: #1b1b1b;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/* Style for youtuber-link (Visit Channel) */
+.youtuber-link {
+    color: #00ff00; /* Green text */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for youtuber-link */
+.youtuber-link:hover {
+    color: #00cc00; /* Darker green on hover */
+}
+
+/* Visit Channel link: Keep color same when visited */
+.youtuber-link:visited {
+    color: #00ff00; /* Keep green color after visit */
+}
+
+/* Dark Mode styles for youtuber-link */
+body.dark-mode .youtuber-link {
+    color: #00ff00; /* Green text */
+}
+
+body.dark-mode .youtuber-link:hover {
+    color: #00cc00; /* Darker green for hover */
+}
+/* Initially hide the description */
+.youtuber-description {
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+    font-style: italic;
+    color: #333;
+    text-align: center;
+}
+
+/* Optional: Style for when description is shown */
+.grid-item.active .youtuber-description {
+    display: block;
+}

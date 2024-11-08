@@ -1,0 +1,186 @@
+/* General styling */
+body {
+    font-family: 'Minecraftia', sans-serif;
+    background-image: url('images/minecraft.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #f0e68c;
+    text-shadow: 1px 1px #2f4f4f;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(34, 139, 34, 0.9);
+    color: #f0e68c;
+    border-bottom: 3px solid #8b4513;
+    font-weight: bold;
+    
+}
+
+.header h1 {
+    font-size: 3em;
+    margin: 0;
+    
+    
+}
+
+.header p {
+    font-size: 1.2em;
+    
+}
+
+/* Main content */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Welcome section */
+.welcome-section {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border: 2px solid #8b4513;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-section h2 {
+    font-size: 2em;
+    color: #000000;
+}
+
+.welcome-section p {
+    font-size: 1.5em;
+    color: #000000;
+}
+
+/* Login section */
+.login-section {
+    text-align: center;
+    background-color: rgba(34, 139, 34, 0.85);
+    padding: 20px;
+    border: 2px solid #8b4513;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-section h2 {
+    color: #f0e68c;
+    font-size: 1.5em;
+    
+}
+
+/* Form styling */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1em;
+    color: #f5deb3;
+    font-weight: bold;
+}
+
+/* Input styling */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid #8b4513;
+    border-radius: 4px;
+    background-color: #f5deb3;
+    color: #333;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: none; /* Disable transition to avoid shifting */
+    font-weight: bold;
+}
+
+/* Password container */
+.password-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.password-container input {
+    padding-right: 40px; /* Space for eye icon */
+    box-sizing: border-box;
+}
+
+/* Icon for password toggle */
+.password-container i {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333;
+}
+
+/* Button styling */
+button {
+    background-color: #228b22;
+    color: #f0e68c;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 100%; /* Ensures button width matches form width */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #32cd32;
+}
+
+/* Form links */
+.form-links a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #87ceeb;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.form-links a:hover {
+    color: #ffa500;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Error messages */
+.error-message {
+    color: #ff6347;
+    font-size: 0.9em;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(34, 139, 34, 0.9);
+    color: #f0e68c;
+    border-top: 3px solid #8b4513;
+    font-weight: bold;
+}
