@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Websignup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Sign-up</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to Minecraft World</h1>
+            <p>Sign up to start your adventure!</p>
+        </header>
+
+        <div class="signup-container">
+            <form id="signupForm" action="http://localhost:3000/signup" method="post">
+                <h3>Create an Account</h3>
+
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required><br>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+                <label for="password">Password:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <i class="fas fa-eye" id="togglePassword" onclick="togglePasswordVisibility('password', this)"></i>
+                </div><br>
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="password-container">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <i class="fas fa-eye" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPassword', this)"></i>
+                </div><br>
+
+                <button type="submit">Sign-up</button>
+                <p>Already have an account? <a href="index.html">Login here</a></p>
+
+                <p id="alertMessage" style="color:red;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(passwordFieldId, icon) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            icon.classList.toggle('fa-eye-slash');
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            const alertMessage = document.getElementById('alertMessage');
+
+            // Clear previous alert messages
+            alertMessage.textContent = '';
+
+            // Check email format
+            const required = '@gmail.com';
+            if (email === '') {
+                alertMessage.textContent = 'Enter email address';
+                return;
+            } else if (!email.endsWith(required)) {
+                alertMessage.textContent = 'Email must end with @gmail.com';
+                return;
+            }
+
+            // Validate password
+            function isValidPassword(password) {
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/~`-]).{8,}$/;
+                return passwordRegex.test(password);
+            }
+
+            // Check password and confirmation match
+            if (password !== confirmPassword) {
+                alertMessage.textContent = 'Passwords do not match. Please try again.';
+                return;
+            }
+
+            // Validate password
+            if (!isValidPassword(password)) {
+                alertMessage.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                return;
+            }
+
+            // Submit the form if validation is successful
+            fetch(this.action, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ fullName, email, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        console.error('Error details:', data); 
+                        throw new Error(data.message || 'Sign-up failed.');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Account created successfully!');
+                    window.location.href = 'index.html'; // Redirect to index.html
+                } else {
+                    alertMessage.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                alertMessage.textContent = error.message; // Updated to display specific server message
+                console.error('Error during sign-up:', error); 
+            });
+        });
+    </script>
+</body>
+</html>
