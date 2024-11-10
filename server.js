@@ -251,10 +251,18 @@ app.post('/login', loginLimiter, async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
-        if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(400).json({ success: false, message: 'Invalid email or password.' });
+
+        // Check if user does not exist
+        if (!user) {
+            return res.status(400).json({ success: false, message: 'Email does not exist.' });
         }
 
+        // Check if password is correct
+        if (!(await bcrypt.compare(password, user.password))) {
+            return res.status(400).json({ success: false, message: 'Invalid password.' });
+        }
+
+        // Successful login, create session
         req.session.userId = user._id;
         req.session.email = user.email;
         req.session.lastLoginTime = new Date();
@@ -268,6 +276,7 @@ app.post('/login', loginLimiter, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
+
 
 app.post('/logout', (req, res) => {
     if (req.session) {
