@@ -696,27 +696,56 @@ body.dark-mode .navbar-music-toggle:hover {
     color: #00ff00; /* Green hover effect in dark mode */
 }
 /* Make the menu items more compact on mobile */
-@media (max-width: 900px) {
+@media (max-width: 600px) {
+    /* Navbar Layout */
+    .navbar {
+        padding: 8px 10px; /* Reduced padding for smaller phones */
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: center; /* Center the navbar items */
+        position: relative; /* Ensure the navbar remains aligned */
+    }
+
+    /* Navbar Title */
+    .navbar-title {
+        font-size: 22px; /* Adjust title size for smaller screens */
+        margin-bottom: 10px; /* Add space between title and menu */
+    }
+
+    /* Center Menu Items */
     .center-menu {
-        flex-direction: column; /* Stack the menu items vertically */
-        align-items: center; /* Center the menu items vertically */
+        display: flex;
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: center; /* Center the items */
+        gap: 15px; /* Increase gap for better spacing */
+        width: 100%; /* Take up full width */
     }
 
     .center-menu li a {
-        font-size: 18px; /* Adjust font size for mobile */
-        padding: 10px 0; /* Add padding to make it easier to click */
+        font-size: 16px; /* Smaller font size for mobile */
+        padding: 8px 0; /* Adequate padding for better touch targets */
+        width: 100%; /* Ensure menu items take full width */
+        text-align: center; /* Center text in the links */
     }
 
-    .navbar {
-        padding: 10px 15px; /* Adjust padding for mobile screens */
-        flex-direction: column; /* Stack navbar items vertically */
-        align-items: center; /* Center the navbar items */
+    /* Space adjustments to ensure navbar fits well */
+    .navbar-logout {
+        margin-top: 15px; /* Add some space between the logout button and the rest of the navbar */
+        font-size: 20px; /* Adjust the size for smaller screens */
     }
 
-    .navbar-title {
-        font-size: 24px; /* Adjust the title font size */
+    /* Adjust the dark mode toggle icon */
+    #darkModeToggle {
+        font-size: 22px; /* Reduce icon size for mobile */
+        margin-bottom: 10px; /* Add spacing between the icon and menu */
+    }
+
+    /* Adjust hover effect */
+    .center-menu li a:hover {
+        color: #00ff00; /* Maintain hover effect */
     }
 }
+
+
 
 
 
