@@ -20,6 +20,7 @@ body {
     justify-content: flex-start;
     min-height: 100vh;
     transition: background-color 0.3s, color 0.3s, background-image 0.3s; /* Smooth transition for dark mode */
+    
 }
 
 /* Dark Mode Styles */
@@ -143,7 +144,6 @@ body.dark-mode .navbar-logout svg {
     max-width: 1200px; /* Maximum width for larger screens */
     padding: 20px;
     text-align: center;
-    
 }
 
 
@@ -151,21 +151,22 @@ body.dark-mode .navbar-logout svg {
     width: 100%; /* Full width within main-content */
     margin: 40px 0;
     text-align: center;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    color:#121212;
     
 }
 
 /* Dark Mode Section Styling */
 body.dark-mode .content-section {
-    background-color: #333;
+    background-color: rgba(52, 51, 51, 0.6);
     color: #ffffff;
 }
 
 h2 {
-    color: #00ff00; /* Bright green for headings */
+    color: #15df15; /* Bright green for headings */
     margin-bottom: 10px;
     font-size: 30px; /* Increase size for headings */
 }
@@ -181,6 +182,7 @@ body.dark-mode h2 {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px; /* Increased gap for spacing */
     margin-top: 20px;
+    color:#121212;
 }
 
 .grid-item {
@@ -190,16 +192,18 @@ body.dark-mode h2 {
     text-align: center;
     cursor: pointer;
     padding: 15px;
-    background-color: #f3f3f3;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     flex-grow: 1; /* Ensures each grid item grows */
+    border: 1px solid #ddd;
+    color:#121212;
 }
 
 
 /* Dark Mode Grid Items */
 body.dark-mode .grid-item {
-    background-color: #444; /* Darker background in grid */
+    background-color: rgba(52, 51, 51, 0.6); /* Darker background in grid */
     color: #ffffff; /* Light text */
 }
 
@@ -209,6 +213,7 @@ body.dark-mode .grid-item {
     height: 150px; /* Fixed height for mobs and blocks */
     object-fit: contain; /* Use contain to show the entire image */
     border-radius: 8px; /* Optional: Add rounded corners */
+    
 }
 
 /* Increase size for biome images */
@@ -232,9 +237,11 @@ body.dark-mode .biome-image {
     display: none; /* Initially hidden */
     margin-top: 5px;
     font-style: italic;
-    color: #333; /* Darker for better contrast */
+    color: rgba(52, 51, 51, 0.6); /* Darker for better contrast */
     text-align: center;
     font-family: 'Press Start 2P', cursive; /* Keep font consistent */
+    color:#121212;
+    
 }
 
 /* Dark Mode Descriptions */
@@ -261,15 +268,15 @@ body.dark-mode .youtuber-description {
 
 /* Mods Section Styling */
 .mods-section {
-    background-color: #f9f9f9; /* Light background for contrast */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for contrast */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Dark Mode Mods Section */
 body.dark-mode .mods-section {
-    background-color: #333; /* Darker background */
+    background-color: rgba(52, 51, 51, 0.6); /* Darker background */
     color: #ffffff; /* Light text */
 }
 
@@ -280,17 +287,18 @@ body.dark-mode .mods-section {
 }
 
 .mod-item {
-    background-color: #fff; /* White background for each mod */
+    background-color: rgba(255, 255, 255, 0.1); /* White background for each mod */
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Dark Mode Mod Items */
 body.dark-mode .mod-item {
-    background-color: #444; /* Darker background */
+    background-color: rgba(52, 51, 51, 0.6); /* Darker background */
     color: #fff; /* Light text */
 }
 
@@ -312,7 +320,7 @@ body.dark-mode .mod-item {
 
 .mod-description {
     font-size: 0.9em;
-    color: #666;
+    color:#121212;
 }
 
 /* Default Download Button */
@@ -368,12 +376,12 @@ body.dark-mode .download-button:hover {
 
 /* Hover effect for youtuber-link */
 .youtuber-link:hover {
-    color: #00cc00; /* Darker green on hover */
+    color: #15df15; /* Darker green on hover */
 }
 
 /* Visit Channel link: Keep color same when visited */
 .youtuber-link:visited {
-    color: #00ff00; /* Keep green color after visit */
+    color: #15df15; /* Keep green color after visit */
 }
 
 /* Dark Mode styles for youtuber-link */
@@ -389,7 +397,7 @@ body.dark-mode .youtuber-link:hover {
     display: none; /* Hidden by default */
     margin-top: 10px;
     font-style: italic;
-    color: #333;
+    color:#121212;
     text-align: center;
 }
 
@@ -541,6 +549,7 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
     height:100%;
     box-sizing: border-box; /* Prevents extra space from affecting the layout */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
 }
 
 /* Slight hover effect */
@@ -595,13 +604,13 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
 /* Info Section */
 .info-section {
     padding: 20px;
-    background-color: #eaf7e5;
+    background-color: rgba(233, 245, 218, 0.8);
     border-radius: 10px;
     margin: 20px 0;
 }
 
 .info-section h2 {
-    color: #2fcd34;
+    color: #15df15;
     font-size: 1.5em;
     margin-bottom: 10px;
 }
@@ -615,13 +624,13 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
 /* Fun Facts Section */
 .fun-facts-section {
     padding: 20px;
-    background-color: #eaf7e5;
+    background-color: rgba(233, 245, 218, 0.8);
     border-radius: 10px;
     margin: 20px 0;
 }
 
 .fun-facts-section h2 {
-    color: #2fcd34;
+    color: #15df15;
     font-size: 1.5em;
     margin-bottom: 10px;
 }
@@ -639,12 +648,12 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
 
 /* Dark Mode for Info and Fun Facts Section */
 body.dark-mode .info-section {
-    background-color: #333333; /* Dark background for info section */
+    background-color: rgba(40, 41, 38, 0.8); /* Dark background for info section */
     color: #ffffff; /* White text */
 }
 
 body.dark-mode .info-section h2 {
-    color: #ffffff; /* White heading text */
+    color: #00ff00; /* White heading text */
 }
 
 body.dark-mode .info-section p {
@@ -652,12 +661,12 @@ body.dark-mode .info-section p {
 }
 
 body.dark-mode .fun-facts-section {
-    background-color: #333333; /* Dark background for fun facts section */
+    background-color: rgba(40, 41, 38, 0.8); /* Dark background for fun facts section */
     color: #ffffff; /* White text */
 }
 
 body.dark-mode .fun-facts-section h2 {
-    color: #ffffff; /* Light teal color for fun facts heading */
+    color: #00ff00; /* Light teal color for fun facts heading */
 }
 
 body.dark-mode .fun-facts-section ul {
@@ -695,6 +704,7 @@ body.dark-mode .navbar-music-toggle {
 body.dark-mode .navbar-music-toggle:hover {
     color: #00ff00; /* Green hover effect in dark mode */
 }
+
 /* Make the menu items more compact on mobile */
 @media (max-width: 600px) {
     /* Navbar Layout */
@@ -744,10 +754,6 @@ body.dark-mode .navbar-music-toggle:hover {
         color: #00ff00; /* Maintain hover effect */
     }
 }
-
-
-
-
 
 
 
