@@ -695,6 +695,28 @@ body.dark-mode .navbar-music-toggle {
 body.dark-mode .navbar-music-toggle:hover {
     color: #00ff00; /* Green hover effect in dark mode */
 }
+/* Make the menu items more compact on mobile */
+@media (max-width: 900px) {
+    .center-menu {
+        flex-direction: column; /* Stack the menu items vertically */
+        align-items: center; /* Center the menu items vertically */
+    }
+
+    .center-menu li a {
+        font-size: 18px; /* Adjust font size for mobile */
+        padding: 10px 0; /* Add padding to make it easier to click */
+    }
+
+    .navbar {
+        padding: 10px 15px; /* Adjust padding for mobile screens */
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: center; /* Center the navbar items */
+    }
+
+    .navbar-title {
+        font-size: 24px; /* Adjust the title font size */
+    }
+}
 
 
 
