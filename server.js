@@ -14,7 +14,9 @@ const validator = require('validator');
 const { MongoClient } = require('mongodb');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
+
+app.set('trust proxy', 1);
 
 // MongoDB URI and Client Setup
 const mongoUri = process.env.MONGODB_URI;
