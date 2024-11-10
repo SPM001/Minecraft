@@ -268,22 +268,20 @@ app.post('/login', loginLimiter, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
+
 app.post('/logout', (req, res) => {
     if (req.session) {
-        // Destroy session
         req.session.destroy((err) => {
             if (err) {
                 console.error('Error destroying session:', err);
                 return res.status(500).json({ success: false, message: 'Error logging out.' });
             }
-            // Redirect to login or home page after logout
             res.json({ success: true, message: 'Successfully logged out.', redirectUrl: '/login' });
         });
     } else {
         res.status(400).json({ success: false, message: 'No active session found.' });
     }
 });
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
