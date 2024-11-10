@@ -10,7 +10,8 @@
 </head>
 <body>
     <nav class="navbar">
-        <span class="navbar-title">Minecraft</span>
+        <span class="navbar-title"><h1>MINECRAFT</h1></span>
+        <button id="darkModeToggle" title="change theme" class="navbar-dark-mode-toggle">🌙</button> <!-- Dark Mode Toggle Button -->
         <ul class="center-menu">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">Games <i class="fas fa-chevron-down"></i></a>
@@ -46,22 +47,34 @@
                 </ul>
             </li>
             
-               
-            
             <li><a href="#blocks">Blocks</a></li>
             <li><a href="#mobs">Mobs</a></li>
             <li><a href="#biomes">Biomes</a></li>
             <li><a href="#mods">Mods</a></li> 
             <li><a href="#youtubers">YouTubers</a></li>
+            <!-- For alignment -->
+            <li><a></a></li>
+            <li><a></a></li>
+            <li><a></a></li>
             <!-- Dropdown for Games -->
             
         </ul>
-        <button id="darkModeToggle" class="navbar-dark-mode-toggle">🌙</button> <!-- Dark Mode Toggle Button -->
+        <button id="toggleMusicButton" title="play music" class="navbar-music-toggle" onclick="toggleMusic()">
+            <i id="musicIcon" class="fas fa-play"></i> <!-- Play icon initially -->
+        </button>
+         <!-- Audio element -->
+    <audio id="backgroundMusic" loop>
+        <source src="Music/Revenge - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video).mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+        
        <!-- Logout Button with Door Icon -->
-       <button id="logoutButton" class="navbar-logout">
+       <button id="logoutButton" title="sign-out" class="navbar-logout">
         <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome Logout Icon -->
     
     </button>
+    
     </nav>
 
     <main class="main-content">
@@ -468,6 +481,21 @@ function showMessage(button) {
     // Show a text alert with the message "Come back after exams"
     alert("Come back after exams");
 }
+function toggleMusic() {
+    const music = document.getElementById('backgroundMusic');
+    const icon = document.getElementById('musicIcon');
+
+    if (music.paused) {
+        music.play(); // Start playing the music
+        icon.classList.remove('fa-play'); // Remove play icon
+        icon.classList.add('fa-pause'); // Add pause icon
+    } else {
+        music.pause(); // Pause the music
+        icon.classList.remove('fa-pause'); // Remove pause icon
+        icon.classList.add('fa-play'); // Add play icon
+    }
+}
+
 
 
 

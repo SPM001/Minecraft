@@ -35,7 +35,6 @@ body.dark-mode {
 
 
 
-/* Navbar styling */
 .navbar {
     width: 100%;
     display: flex;
@@ -49,11 +48,8 @@ body.dark-mode {
     top: 0;
     left: 0;
     z-index: 1000; /* Keep navbar on top */
-}
-
-/* Space between dark mode toggle and logout */
-.navbar .dark-mode-toggle {
-    margin-right: 20px; /* Adds space between dark mode toggle and logout */
+    padding-left: 0;  /* Ensure no extra padding on the left */
+    padding-right: 0;  /* Ensure no extra padding on the right */
 }
 
 /* Dark Mode Navbar */
@@ -62,7 +58,7 @@ body.dark-mode .navbar {
 }
 
 .navbar-title {
-    font-size: 28px; /* Slightly larger for prominence */
+    font-size: 30px; /* Slightly larger for prominence */
     font-weight: bold;
     color: #00ff00; /* Bright green like grass */
 }
@@ -72,14 +68,13 @@ body.dark-mode .navbar-title {
     color: #00ff00; /* Maintain bright green title in dark mode */
 }
 
-/* Ensure the center menu takes up more space */
 .center-menu {
     display: flex;
     gap: 20px;
     list-style-type: none;
-    margin: 0 auto;
-    flex-grow: 1;  /* This ensures that the center-menu takes up all available space */
-    justify-content: center;
+    margin: 0 auto;  /* Auto margin for centering */
+    flex-grow: 1;  /* Ensures the center-menu takes up all available space */
+    justify-content: center;  /* Ensures the items are centered */
 }
 
 .center-menu li a {
@@ -440,8 +435,11 @@ body.dark-mode .youtuber-link:hover {
     outline: none; /* Remove focus outline */
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margin */
-    display: inline-block; /* Align with other inline elements */
+    display: inline-flex; /* Use flexbox for better alignment */
+    align-items: center; /* Vertically align the icons */
+    justify-content: center; /* Ensure the icons are centered horizontally */
 }
+
 
 /* Additional optional styling */
 #darkModeToggle:hover {
@@ -669,6 +667,35 @@ body.dark-mode .fun-facts-section ul {
 body.dark-mode .fun-facts-section li {
     color: #ffffff; /* Light gray text for list items */
 }
+/* Music Button Styling */
+.navbar-music-toggle {
+    background: none;
+    border: none;
+    color: #ffffff; /* White color for the icon */
+    font-size: 25px; /* Icon size */
+    cursor: pointer; /* Pointer cursor for clickable button */
+    transition: color 0.2s ease; /* Smooth color transition */
+    margin-right: 20px; /* Adds space between the music button and the night mode button */
+}
+
+.navbar-music-toggle:hover {
+    color: #00ff00; /* Green color on hover */
+}
+
+/* Music Icon Styles */
+#musicIcon {
+    font-size: 25px; /* Same as button size */
+}
+
+/* Dark Mode Music Button */
+body.dark-mode .navbar-music-toggle {
+    color: #ffffff; /* White icon color in dark mode */
+}
+
+body.dark-mode .navbar-music-toggle:hover {
+    color: #00ff00; /* Green hover effect in dark mode */
+}
+
 
 
 
