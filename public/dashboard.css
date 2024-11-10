@@ -616,7 +616,7 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
 }
 
 .info-section p {
-    color: #555;
+    color: #000000;
     font-size: 1em;
     line-height: 1.5;
 }
@@ -643,7 +643,7 @@ body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
 .fun-facts-section li {
     font-size: 1em;
     margin-bottom: 8px;
-    color: #333;
+    color: #000000;
 }
 
 /* Dark Mode for Info and Fun Facts Section */
