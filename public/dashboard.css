@@ -7,21 +7,33 @@
 
 /* Default Body Styling */
 body {
-    font-family: 'Press Start 2P', cursive; /* Use a pixelated font */
-    background-color: #e0e0e0; /* Slightly darker background for contrast */
+    font-family: 'Press Start 2P', cursive;
+    background-color: #e0e0e0; /* Default background color */
+    background-image: url('images/light.jpg'); /* Default background image */
+    background-size: cover; /* Make the image cover the entire screen */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Ensure the image does not repeat */
+    background-attachment: fixed; /* Keep the background fixed during scrolling */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Keep navbar at the top */
+    justify-content: flex-start;
     min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
+    transition: background-color 0.3s, color 0.3s, background-image 0.3s; /* Smooth transition for dark mode */
 }
 
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212; /* Dark background */
     color: #ffffff; /* White text in dark mode */
+    background-image: url('images/dark.jpg'); /* Dark mode background image */
+    background-size: cover; /* Make the image cover the entire screen */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Ensure the image does not repeat */
+    background-attachment: fixed; /* Keep the background fixed during scrolling */
 }
+
+
 
 /* Navbar styling */
 .navbar {
@@ -60,12 +72,13 @@ body.dark-mode .navbar-title {
     color: #00ff00; /* Maintain bright green title in dark mode */
 }
 
+/* Ensure the center menu takes up more space */
 .center-menu {
     display: flex;
     gap: 20px;
     list-style-type: none;
     margin: 0 auto;
-    flex-grow: 1;
+    flex-grow: 1;  /* This ensures that the center-menu takes up all available space */
     justify-content: center;
 }
 
@@ -95,7 +108,7 @@ body.dark-mode .center-menu li a:hover {
     background: none;
     color: #ffffff;
     border: none;
-    font-size: 16px;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     transition: color 0.2s ease, transform 0.2s ease;
@@ -127,17 +140,18 @@ body.dark-mode .navbar-logout svg {
 
 /* Expanded main content */
 .main-content {
-    margin-top: 100px;
+    margin-top: 100px;  /* Space for the fixed navbar */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%; /* Expanded to occupy more width */
+    width: 100%; /* Full width */
     max-width: 1200px; /* Maximum width for larger screens */
     padding: 20px;
     text-align: center;
+    
 }
 
-/* Section styling */
+
 .content-section {
     width: 100%; /* Full width within main-content */
     margin: 40px 0;
@@ -146,6 +160,7 @@ body.dark-mode .navbar-logout svg {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    
 }
 
 /* Dark Mode Section Styling */
@@ -157,7 +172,7 @@ body.dark-mode .content-section {
 h2 {
     color: #00ff00; /* Bright green for headings */
     margin-bottom: 10px;
-    font-size: 24px; /* Increase size for headings */
+    font-size: 30px; /* Increase size for headings */
 }
 
 /* Dark Mode Headings */
@@ -183,7 +198,9 @@ body.dark-mode h2 {
     background-color: #f3f3f3;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Ensures each grid item grows */
 }
+
 
 /* Dark Mode Grid Items */
 body.dark-mode .grid-item {
@@ -229,6 +246,7 @@ body.dark-mode .biome-image {
 body.dark-mode .mob-description,
 body.dark-mode .biome-description,
 body.dark-mode .block-description,
+body.dark-mode .mod-description,
 body.dark-mode .youtuber-description {
     color: #ffffff; /* White text for descriptions in dark mode */
 }
@@ -302,8 +320,9 @@ body.dark-mode .mod-item {
     color: #666;
 }
 
+/* Default Download Button */
 .download-button {  
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50; /* Green background for normal mode */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -318,13 +337,20 @@ body.dark-mode .mod-item {
 
 /* Dark Mode Download Button */
 body.dark-mode .download-button {
-    background-color: #333;
-    color: #ffffff;
+    background-color: #4CAF50; /* Green background in dark mode */
+    color: white; /* Ensure the text remains white */
 }
 
+/* Hover Effect for Download Button */
 .download-button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Darker green when hovering */
 }
+
+/* Dark Mode Hover Effect */
+body.dark-mode .download-button:hover {
+    background-color: #45a049; /* Darker green on hover in dark mode */
+}
+
 
 /* Footer */
 .footer {
@@ -376,3 +402,274 @@ body.dark-mode .youtuber-link:hover {
 .grid-item.active .youtuber-description {
     display: block;
 }
+/* Navbar and Dropdown Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+}
+
+.navbar-title {
+    font-size: 24px;
+    color: #fff;
+}
+
+.center-menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.center-menu li {
+    margin-right: 20px;
+}
+
+.center-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+/* Dark Mode Toggle Button (moon and sun) */
+#darkModeToggle {
+    font-size: 24px; /* Size of the sun and moon icons */
+    cursor: pointer; /* Makes the icons clickable */
+    background: none; /* No background */
+    border: none; /* Remove any border */
+    outline: none; /* Remove focus outline */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: inline-block; /* Align with other inline elements */
+}
+
+/* Additional optional styling */
+#darkModeToggle:hover {
+    color: #00ff00; /* Hover effect: change icon color to green */
+}
+/* Dropdown Menu Styles */
+.navbar .center-menu .dropdown {
+    position: relative; /* Ensures the dropdown appears relative to the parent */
+}
+
+.navbar .center-menu .dropdown .dropdown-toggle {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between text and icon */
+    
+}
+
+/* The dropdown menu */
+.navbar .center-menu .dropdown .dropdown-menu {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 100%;  /* Position it directly below the toggle */
+    left: 0;    /* Align the dropdown to the left of the parent */
+    right:  0;   /* Ensure the dropdown stretches across the full navbar */
+    background-color: #333;
+    list-style-type: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 999; /* Ensure it is above other content */
+    max-height: 700px;
+    width: 580px; /* Let the width be determined by parent */
+}
+
+/* Show the dropdown when active */
+.navbar .center-menu .dropdown .dropdown-menu.show {
+    display: block; /* Show the dropdown */
+}
+
+/* Links inside the dropdown */
+.navbar .center-menu .dropdown .dropdown-menu li a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    padding: 20px 20px; /* Increase padding for more space inside each item */
+}
+
+/* Hover effect for dropdown links */
+.navbar .center-menu .dropdown .dropdown-menu li a:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+/* Dark Mode Adjustments for Dropdown */
+body.dark-mode .navbar .center-menu .dropdown .dropdown-menu {
+    background-color: #444; /* Darker background in dark mode */
+}
+
+body.dark-mode .navbar .center-menu .dropdown .dropdown-menu li a {
+    color: #fff; /* White text in dark mode */
+}
+
+/* Green hover effect for Game link */
+.navbar .center-menu .dropdown:hover .dropdown-toggle,
+.navbar .center-menu .dropdown .dropdown-menu li a:hover {
+    color: #00ff00; /* Green hover color */
+}
+
+/* Rotate the dropdown icon when the menu is active */
+.navbar .center-menu .dropdown.active .dropdown-toggle svg {
+    transform: rotate(180deg); /* Rotate the icon when dropdown is active */
+}
+
+/* Make the "Game" link turn green when hovered */
+.navbar .center-menu .dropdown .dropdown-toggle:hover {
+    color: #00ff00; /* Green color when hovered */
+}
+/* Rotate the dropdown icon when the menu is dropped (active state) */
+.navbar .center-menu .dropdown.active .dropdown-toggle i {
+    transform: rotate(180deg); /* Rotate the icon by 180 degrees */
+}
+/* Dropdown item with background image */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+    background-size: cover; /* Ensure background image covers the whole container */
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    position: relative;
+    min-height: 100px; /* Adjust this to control the height of the background */
+    width: 100%; /* Ensure it spans the full width of its container */
+    height:100%;
+    box-sizing: border-box; /* Prevents extra space from affecting the layout */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slight hover effect */
+.dropdown-item:hover { 
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Text overlay */
+.dropdown-text {
+    position: absolute;
+    top: 50%; /* Position text vertically in the center */
+    left: 10%;
+    transform: translateY(-50%); /* Center the text vertically */
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%; /* Ensure text stays within bounds */
+    z-index: 2;
+}
+
+/* Game title styling */
+.dropdown-title {
+    font-weight: bold;
+    color: #00ff00; /* Green text for game titles */
+    font-size: 1.2em; /* Larger font for titles */
+}
+
+/* Game description styling */
+.dropdown-description {
+    font-size: 0.9em;
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+/* Download button styling */
+.download-button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Download button hover effect */
+.download-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+/* Info Section */
+.info-section {
+    padding: 20px;
+    background-color: #eaf7e5;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.info-section h2 {
+    color: #2fcd34;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    color: #555;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Fun Facts Section */
+.fun-facts-section {
+    padding: 20px;
+    background-color: #eaf7e5;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.fun-facts-section h2 {
+    color: #2fcd34;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.fun-facts-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fun-facts-section li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Dark Mode for Info and Fun Facts Section */
+body.dark-mode .info-section {
+    background-color: #333333; /* Dark background for info section */
+    color: #ffffff; /* White text */
+}
+
+body.dark-mode .info-section h2 {
+    color: #ffffff; /* White heading text */
+}
+
+body.dark-mode .info-section p {
+    color: #ffffff; /* Light gray text */
+}
+
+body.dark-mode .fun-facts-section {
+    background-color: #333333; /* Dark background for fun facts section */
+    color: #ffffff; /* White text */
+}
+
+body.dark-mode .fun-facts-section h2 {
+    color: #ffffff; /* Light teal color for fun facts heading */
+}
+
+body.dark-mode .fun-facts-section ul {
+    color: #ffffff; /* White text for list items */
+}
+
+body.dark-mode .fun-facts-section li {
+    color: #ffffff; /* Light gray text for list items */
+}
+
+
+
+

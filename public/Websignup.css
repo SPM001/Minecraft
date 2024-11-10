@@ -1,4 +1,4 @@
-/* General styling */
+/* General styling for the body */
 body {
     font-family: 'Minecraftia', sans-serif;
     background-image: url('images/minecraft.jpg');
@@ -7,44 +7,88 @@ body {
     padding: 0;
     color: #f0e68c;
     text-shadow: 1px 1px #2f4f4f;
+    animation: moveBackground 30s linear infinite; /* Add background animation */
+    background-attachment: fixed;
+    background-position: center center;
+    height: 100vh;
 }
 
-/* Header */
+/* Background animation */
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -500px -500px;
+    }
+}
+
+/* Drop down animation for content */
+@keyframes dropIn {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header styling with drop-in animation */
 .header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
     text-align: center;
-    padding: 20px;
-    background-color: rgba(34, 139, 34, 0.9);
+    padding: 40px 20px;
+    background-color: rgba(34, 139, 34, 0.9); /* Slightly transparent for visibility */
     color: #f0e68c;
-    border-bottom: 3px solid #8b4513;
+    border: 3px solid #8b4513;
     font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Stronger shadow for better effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow to separate from content */
+    width: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    margin: 0 auto;
+    animation: dropIn 1.5s ease-out; /* Apply drop-in animation to the header */
 }
 
+/* Header content */
 .header h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin: 0;
 }
 
 .header p {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 /* Sign-up form container */
 .signup-container {
     text-align: center;
-    background-color: rgba(34, 139, 34, 0.85);
-    padding: 20px;
+    background-color: rgba(34, 139, 34, 0.5);
+    padding: 30px;
     border: 2px solid #8b4513;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Enhance the shadow */
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 450px;
+    margin: 100px auto 20px auto; /* Adjust for header overlap */
+    animation: dropIn 1.5s ease-out; /* Apply drop-down animation */
 }
 
+/* Form heading inside the container */
 .signup-container h3 {
     color: #f0e68c;
-    font-size: 1.5em;
+    font-size: 1.8em;
+    margin-bottom: 20px;
 }
+
 
 /* Form styling */
 #signupForm {
@@ -60,33 +104,42 @@ label {
     margin-bottom: 10px;
 }
 
+/* Input fields for text, email, and password */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 90%;
-    padding: 10px;
+    padding: 12px;
     margin: 8px 0;
     border: 2px solid #8b4513;
-    border-radius: 4px;
+    border-radius: 5px;
     background-color: #f5deb3;
     color: #333;
     font-size: 1em;
     transition: none;
 }
 
+input[type="email"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill {
+    background-color: #f5deb3 !important;
+    color: #333 !important;
+    border-color: #8b4513 !important;
+    box-shadow: 0 0 0 30px #f5deb3 inset !important;
+}
+
 /* Button styling */
 button {
     background-color: #228b22; 
     color: #f0e68c;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     width: 100%;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
-    margin-top: 10px;
-    
+    margin-top: 15px;
 }
 
 button:hover {
@@ -141,8 +194,9 @@ form p a:hover {
 /* Footer */
 .footer {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     background-color: rgba(34, 139, 34, 0.9);
     color: #f0e68c;
     border-top: 3px solid #8b4513;
+    margin-top: 20px;
 }

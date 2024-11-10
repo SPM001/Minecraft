@@ -62,6 +62,15 @@ input[type="password"] {
     box-sizing: border-box; /* Ensures padding doesn't cause overflow */
 }
 
+/* Prevent autofill background color from changing */
+input[type="text"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill {
+    background-color: #f5deb3 !important; /* Ensure the background stays the same */
+    color: #333 !important; /* Ensure text color is consistent */
+    border-color: #8b4513 !important; /* Ensure the border color stays the same */
+    box-shadow: 0 0 0 30px #f5deb3 inset !important; /* Remove the blue autofill box shadow */
+}
+
 /* Ensures that password and reset code fields maintain consistent styling */
 input[type="text"]:hover, input[type="password"]:hover, 
 input[type="text"]:focus, input[type="password"]:focus {

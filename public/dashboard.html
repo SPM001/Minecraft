@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome CDN link -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Minecraft Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -13,11 +12,49 @@
     <nav class="navbar">
         <span class="navbar-title">Minecraft</span>
         <ul class="center-menu">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Games <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" style="background-image: url('images/vanilla.jpg');">
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">Minecraft</span>
+                            <span class="dropdown-description">Explore your own unique world, survive the night, and create anything you can imagine!</span>
+                            <button class="download-button" onclick="showMessage(this)">Download</button>
+                        </div>
+                    </li>
+                    <li class="dropdown-item" style="background-image: url('images/dungeon.avif');">
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">Minecraft Dungeons</span>
+                            <span class="dropdown-description">Discover an action-adventure game inspired by classic dungeon crawlers.</span>
+                            <button class="download-button" onclick="showMessage(this)">Download</button>
+                        </div>
+                    </li>
+                    <li class="dropdown-item" style="background-image: url('images/legend.webp');">
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">Minecraft Legends</span>
+                            <span class="dropdown-description">Lead your allies to defend the Overworld in this exciting action strategy game.</span>
+                            <button class="download-button" onclick="showMessage(this)">Download</button>
+                        </div>
+                    </li>
+                    <li class="dropdown-item" style="background-image: url('images/education.avif');">
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">Minecraft Education</span>
+                            <span class="dropdown-description">Unlock a world of learning with Minecraft Education at home and in the classroom!</span>
+                            <button class="download-button" onclick="showMessage(this)">Download</button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            
+               
+            
             <li><a href="#blocks">Blocks</a></li>
             <li><a href="#mobs">Mobs</a></li>
             <li><a href="#biomes">Biomes</a></li>
             <li><a href="#mods">Mods</a></li> 
             <li><a href="#youtubers">YouTubers</a></li>
+            <!-- Dropdown for Games -->
+            
         </ul>
         <button id="darkModeToggle" class="navbar-dark-mode-toggle">🌙</button> <!-- Dark Mode Toggle Button -->
        <!-- Logout Button with Door Icon -->
@@ -25,18 +62,34 @@
         <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome Logout Icon -->
     
     </button>
-
-
     </nav>
 
-   
-    
     <main class="main-content">
         <div class="sidebar-welcome">
             <h1><span id="user-email">[User's Email]</span></h1>
         </div>
         <h1>Welcome to the Minecraft Dashboard</h1>
-        <p>Select a category from the menu to explore more.</p>
+        <h3>Select a category from the menu to explore more.</h3>
+
+        <!-- Minecraft Info Section -->
+    <section id="minecraft-info" class="info-section" >
+        <h2>What is Minecraft?</h2>
+        <p>
+            Minecraft is a sandbox video game developed by Mojang Studios, where players can explore a blocky, procedurally generated 3D world. Players can mine resources, build structures, craft items, and fight enemies. The game has various modes, including Creative, Survival, and Adventure, and is available on multiple platforms such as PC, consoles, and mobile devices.
+        </p>
+    </section>
+
+    <!-- Minecraft Fun Facts Section -->
+    <section id="minecraft-fun-facts" class="fun-facts-section">
+        <h2>Fun Facts About Minecraft</h2>
+        <ul>
+            <li><strong>Over 200 million copies sold!</strong> Minecraft is one of the best-selling video games of all time.</li>
+            <li><strong>The world is infinite!</strong> Minecraft's world is procedurally generated, meaning it’s essentially limitless.</li>
+            <li><strong>There are multiple dimensions!</strong> You can explore the Overworld, the Nether, and the End.</li>
+            <li><strong>The longest redstone circuit!</strong> The longest redstone circuit created in Minecraft is over 6 million blocks long.</li>
+            <li><strong>More than just a game!</strong> Minecraft is used in classrooms worldwide as an educational tool.</li>
+        </ul>
+    </section>
 
         <!-- Blocks Section -->
         <section id="blocks" class="content-section">
@@ -400,6 +453,25 @@
             // Update the icon to represent the mode
             darkModeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
         });
+        // JavaScript to toggle dropdown
+        document.querySelector('.dropdown-toggle').addEventListener('click', function (e) {
+            e.preventDefault();
+            var dropdownMenu = this.nextElementSibling; // Get the dropdown menu
+            dropdownMenu.classList.toggle('show'); // Toggle the 'show' class
+        });
+        // JavaScript to toggle the dropdown active state and change the icon
+document.querySelector('.navbar .center-menu .dropdown').addEventListener('click', function() {
+    this.classList.toggle('active'); // Toggle the active class to rotate the icon and open the dropdown
+});
+// JavaScript function to show an alert when the download button is clicked
+function showMessage(button) {
+    // Show a text alert with the message "Come back after exams"
+    alert("Come back after exams");
+}
+
+
+
+
     </script>
 </body>
 </html>

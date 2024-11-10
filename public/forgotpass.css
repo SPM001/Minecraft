@@ -37,7 +37,7 @@ header p {
 /* Form container for Forgot Password */
 .form-container {
     text-align: center;
-    background-color: rgba(34, 139, 34, 0.85);
+    background-color: rgba(34, 139, 34, 0.5);
     padding: 20px;
     border: 2px solid #8b4513;
     border-radius: 10px;
@@ -70,6 +70,15 @@ input[type="email"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Prevent autofill background color from changing */
+input[type="email"]:-webkit-autofill {
+    background-color: #f5deb3 !important; /* Ensure the background stays the same */
+    color: #333 !important; /* Ensure text color is consistent */
+    border-color: #8b4513 !important; /* Ensure the border color stays the same */
+    box-shadow: 0 0 0 30px #f5deb3 inset !important; /* Remove the blue autofill box shadow */
+}
+
+/* Input fields hover and focus effects */
 input[type="email"]:hover, input[type="email"]:focus {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(34, 139, 34, 0.8);
