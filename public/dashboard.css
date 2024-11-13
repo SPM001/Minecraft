@@ -754,6 +754,7 @@ body.dark-mode .navbar-music-toggle:hover {
         color: #00ff00; /* Maintain hover effect */
     }
 }
+<<<<<<< HEAD
 
 /* Music dropdown styling */
 #musicSelect {
@@ -772,6 +773,8 @@ body.dark-mode .navbar-music-toggle:hover {
     border-color: #00ff00; /* Optional: green border */
 }
 
+=======
+>>>>>>> 10cc45c61fa4cd2f719fdf36d5f192ae2971d117
 
 
 
