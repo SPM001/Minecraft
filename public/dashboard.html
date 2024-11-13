@@ -46,18 +46,13 @@
                     </li>
                 </ul>
             </li>
-            
+        
             <li><a href="#blocks">Blocks</a></li>
             <li><a href="#mobs">Mobs</a></li>
             <li><a href="#biomes">Biomes</a></li>
             <li><a href="#mods">Mods</a></li> 
-            <li><a href="#youtubers">YouTubers</a></li>
-            <!-- For alignment -->
-            <li><a></a></li>
-            <li><a></a></li>
-            <li><a></a></li>
-            <!-- Dropdown for Games -->
-            
+            <li><a href="#youtubers">YouTubers</a></li>        
+
         </ul>
        <!-- Play button for music -->
         <button id="toggleMusicButton" title="play music" class="navbar-music-toggle" onclick="toggleMusic()">
@@ -65,6 +60,7 @@
         </button>
 
         <!-- Dropdown for music selection -->
+        <label for="musicSelect" id="musicLabel">Choose Music:</label>
         <select id="musicSelect" onchange="changeMusic()">
             <option value="Music/Revenge.mp3">Revenge</option>
             <option value="Music/Chill.mp3">Chill</option>

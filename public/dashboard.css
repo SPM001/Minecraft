@@ -754,9 +754,17 @@ body.dark-mode .navbar-music-toggle:hover {
         color: #00ff00; /* Maintain hover effect */
     }
 }
-<<<<<<< HEAD
 
-/* Music dropdown styling */
+/* Music label styling */
+#musicLabel {
+    font-size: 16px;
+    color: #ffffff; /* Adjust to match your navbar's color scheme */
+    margin-right: 5px; /* Space between label and dropdown */
+    display: inline-block;
+    vertical-align: middle; /* Align with the dropdown */
+}
+
+/* Dropdown styling */
 #musicSelect {
     padding: 5px;
     font-size: 16px;
@@ -764,17 +772,15 @@ body.dark-mode .navbar-music-toggle:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    margin-left: 10px;
 }
 
 /* Hover effect for music dropdown */
 #musicSelect:hover {
-    background-color: #1ed51e; /* Bright green background */
-    color: #ffffff; /* White text for contrast */
-    border-color: #00ff00; /* Optional: green border */
+    background-color: #00ff00; /* Bright green background */
+    color: #ffffff; /* White text */
+    border-color: #00ff00;
 }
-
-=======
->>>>>>> 10cc45c61fa4cd2f719fdf36d5f192ae2971d117
 
 
 
