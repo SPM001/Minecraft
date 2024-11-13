@@ -59,16 +59,27 @@
             <!-- Dropdown for Games -->
             
         </ul>
+       <!-- Play button for music -->
         <button id="toggleMusicButton" title="play music" class="navbar-music-toggle" onclick="toggleMusic()">
-            <i id="musicIcon" class="fas fa-play"></i> <!-- Play icon initially -->
+        <i id="musicIcon" class="fas fa-play"></i> <!-- Play icon initially -->
         </button>
-         <!-- Audio element -->
+
+        <!-- Dropdown for music selection -->
+        <select id="musicSelect" onchange="changeMusic()">
+            <option value="Music/Revenge.mp3">Revenge</option>
+            <option value="Music/Chill.mp3">Chill</option>
+            <option value="Music/Fallen Kingdom.mp3">Fallen Kingdom</option>
+            <option value="Music/Akuma.mp3">Akuma no Ko</option>
+            <option value="Music/APT.mp3">APT</option>
+        </select>
+
+    <!-- Audio element -->
     <audio id="backgroundMusic" loop>
-        <source src="Music/Revenge - A Minecraft Parody of Usher's DJ Got Us Fallin' In Love (Music Video).mp3" type="audio/mp3">
+        <source src="Music/Revenge.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
-        
+
        <!-- Logout Button with Door Icon -->
        <button id="logoutButton" title="sign-out" class="navbar-logout">
         <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome Logout Icon -->
@@ -481,19 +492,29 @@ function showMessage(button) {
     // Show a text alert with the message "Come back after exams"
     alert("Come back after exams");
 }
-function toggleMusic() {
-    const music = document.getElementById('backgroundMusic');
-    const icon = document.getElementById('musicIcon');
+const musicIcon = document.getElementById("musicIcon");
+const backgroundMusic = document.getElementById("backgroundMusic");
 
-    if (music.paused) {
-        music.play(); // Start playing the music
-        icon.classList.remove('fa-play'); // Remove play icon
-        icon.classList.add('fa-pause'); // Add pause icon
+// Toggle play/pause
+function toggleMusic() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicIcon.classList.remove("fa-play");
+        musicIcon.classList.add("fa-pause");
     } else {
-        music.pause(); // Pause the music
-        icon.classList.remove('fa-pause'); // Remove pause icon
-        icon.classList.add('fa-play'); // Add play icon
+        backgroundMusic.pause();
+        musicIcon.classList.remove("fa-pause");
+        musicIcon.classList.add("fa-play");
     }
+}
+
+// Change music source when a new song is selected
+function changeMusic() {
+    const musicSelect = document.getElementById("musicSelect");
+    backgroundMusic.src = musicSelect.value;
+    backgroundMusic.play();
+    musicIcon.classList.remove("fa-play");
+    musicIcon.classList.add("fa-pause");
 }
 
 
