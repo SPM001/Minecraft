@@ -248,9 +248,12 @@ app.post('/login', loginLimiter, async (req, res) => {
 
         // Check if account is locked
         if (user.accountLockedUntil && user.accountLockedUntil > new Date()) {
+            // Convert accountLockedUntil (UTC) to PHT
+            const lockedUntilPHT = user.accountLockedUntil.toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+            
             return res.status(400).json({
                 success: false,
-                message: `Your account is locked until ${user.accountLockedUntil}. Please try again later.`
+                message: `Your account is locked until ${lockedUntilPHT}. Please try again later.`
             });
         }
 
@@ -289,6 +292,7 @@ app.post('/login', loginLimiter, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
+
 
 
 
