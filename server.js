@@ -13,7 +13,7 @@ const helmet = require('helmet');
 const validator = require('validator');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 app.set('trust proxy', 1);
 
