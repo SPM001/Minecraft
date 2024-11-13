@@ -11,31 +11,11 @@ const MongoStore = require('connect-mongo');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const validator = require('validator');
-const { MongoClient } = require('mongodb');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.set('trust proxy', 1);
-
-// MongoDB URI and Client Setup
-const mongoUri = process.env.MONGODB_URI;
-const client = new MongoClient(mongoUri);
-let usersCollection;
-
-// Connect to MongoDB
-async function connectToDatabase() {
-    try {
-        await client.connect();
-        console.log('Connected to MongoDB');
-        const database = client.db('userDB_reset_password');
-        usersCollection = database.collection('userDB_reset_password');
-    } catch (err) {
-        console.error('Failed to connect to MongoDB', err);
-        process.exit(1);
-    }
-}
-connectToDatabase();
 
 // Mongoose connection for User Schema
 mongoose.connect(process.env.MONGODB_URI)
@@ -50,13 +30,14 @@ const userSchema = new mongoose.Schema({
     resetExpires: Date,
     password: String,
     invalidLoginAttempts: { type: Number, default: 0 },
-    accountLockedUntil: Date,
+    accountLockedUntil: Date, // Field to lock account
     lastLoginTime: Date,
     studentIDNumber: String,
     role: String,
 });
 
 const User = mongoose.model('User', userSchema, 'userDB_reset_password');
+
 
 // Configure SendGrid API Key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -68,12 +49,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet()); // Set security-related HTTP headers
 
+// Prevent caching for sensitive pages
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+});
+
 // Session management with MongoDB
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: mongoUri }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     cookie: {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
@@ -230,12 +219,12 @@ app.get('/user-details', isAuthenticated, async (req, res) => {
             return res.status(401).json({ success: false, message: 'Unauthorized access.' });
         }
 
-        const user = await usersCollection.findOne({ email }, { projection: { email: 1 } });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ success: false, message: 'User not found.' });
         }
 
-        res.json({ success: true, user: { email: user.email } });
+        res.json({ success: true, user });
     } catch (error) {
         console.error('Error fetching user details:', error);
         res.status(500).json({ success: false, message: 'Error fetching user details.' });
@@ -257,18 +246,42 @@ app.post('/login', loginLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Email does not exist.' });
         }
 
+        // Check if account is locked
+        if (user.accountLockedUntil && user.accountLockedUntil > new Date()) {
+            return res.status(400).json({
+                success: false,
+                message: `Your account is locked until ${user.accountLockedUntil}. Please try again later.`
+            });
+        }
+
         // Check if password is correct
-        if (!(await bcrypt.compare(password, user.password))) {
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            // Increment invalid login attempts
+            user.invalidLoginAttempts += 1;
+
+            // Lock the account if invalid attempts exceed the threshold (e.g., 5 attempts)
+            if (user.invalidLoginAttempts >= 5) {
+                // Set account locked time for 30 minutes from now
+                user.accountLockedUntil = new Date(Date.now() + 30 * 60 * 1000); // Lock for 30 minutes
+            }
+
+            await user.save(); // Save the updated user (invalid attempts and account lock)
             return res.status(400).json({ success: false, message: 'Invalid password.' });
         }
 
-        // Successful login, create session
+        // Successful login, reset invalid attempts and account lock
+        user.invalidLoginAttempts = 0;
+        user.accountLockedUntil = null; // Remove account lock
+        user.lastLoginTime = new Date(); // Update last login time
+
+        await user.save(); // Save the updated user (successful login)
+
+        // Create session
         req.session.userId = user._id;
         req.session.email = user.email;
         req.session.lastLoginTime = new Date();
-
-        user.invalidLoginAttempts = 0;
-        await user.save();
 
         res.json({ success: true, message: 'Login successful.', redirectUrl: '/dashboard' });
     } catch (error) {
@@ -278,6 +291,7 @@ app.post('/login', loginLimiter, async (req, res) => {
 });
 
 
+
 app.post('/logout', (req, res) => {
     if (req.session) {
         req.session.destroy((err) => {
@@ -285,7 +299,9 @@ app.post('/logout', (req, res) => {
                 console.error('Error destroying session:', err);
                 return res.status(500).json({ success: false, message: 'Error logging out.' });
             }
-            res.json({ success: true, message: 'Successfully logged out.', redirectUrl: '/login' });
+            // Send a response that forces the frontend to redirect
+            res.clearCookie('connect.sid'); // Clear the session cookie
+            res.json({ success: true, message: 'Successfully logged out.' });
         });
     } else {
         res.status(400).json({ success: false, message: 'No active session found.' });

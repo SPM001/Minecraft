@@ -412,58 +412,66 @@
     </main>
 
     <script>
-        function downloadMod(modName) {
-            alert(`Sorry, the download for ${modName} is not available.`);
-        }
-    
-        function toggleDescription(id) {
-            const element = document.getElementById(id);
-            element.style.display = element.style.display === 'block' ? 'none' : 'block';
-        }
-    
-        // Logout button functionality
-        document.getElementById('logoutButton').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/logout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include'
-                });
-    
-                const result = await response.json();
-    
-                if (result.success) {
-                    window.location.href = '/index.html'; // Redirect to login or home page
-                } else {
-                    alert(result.message || 'Failed to logout');
-                }
-            } catch (error) {
-                console.error('Logout error:', error);
-                alert('An error occurred while logging out');
+         function downloadMod(modName) {
+        alert(`Sorry, the download for ${modName} is not available.`);
+    }
+
+    function toggleDescription(id) {
+        const element = document.getElementById(id);
+        element.style.display = element.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Centralized redirect for unauthorized access
+    function redirectToLogin() {
+        alert('Please log in to access this page.');
+        window.location.href = '/index.html'; // Redirect to login
+    }
+
+    // Logout button functionality
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+        try {
+            const response = await fetch('/logout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include'
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // Clear session cookie and force reload
+                document.cookie = "connect.sid=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+                window.location.href = '/index.html'; // Redirect to login page
+            } else {
+                alert(result.message || 'Failed to logout');
             }
-        });
-    
-        // Fetch user details when the page loads
-        document.addEventListener('DOMContentLoaded', fetchUserDetails);
-    
-        async function fetchUserDetails() {
-            try {
-                const response = await fetch('/user-details', { credentials: 'include' });
-                const data = await response.json();
-    
-                if (data.success) {
-                    console.log('User email:', data.user.email); // Log user email to console
-                    document.getElementById('user-email').textContent = `Hello, ${data.user.email}!`; // Display the email
-                } else {
-                    console.error('Failed to fetch user details:', data.message);
-                    alert(data.message || 'Failed to retrieve user details. Please log in again.');
-                    window.location.href = '/index.html'; // Redirect to login if unauthorized
-                }
-            } catch (error) {
-                console.error('Error fetching user details:', error);
-                alert('An error occurred while fetching user details');
-            }
+        } catch (error) {
+            console.error('Logout error:', error);
+            alert('An error occurred while logging out');
         }
+    });
+
+    // Fetch user details when the page loads
+    document.addEventListener('DOMContentLoaded', fetchUserDetails);
+
+    async function fetchUserDetails() {
+        try {
+            const response = await fetch('/user-details', { credentials: 'include' });
+            const data = await response.json();
+
+            if (data.success) {
+                console.log('User email:', data.user.email); // Log user email to console
+                document.getElementById('user-email').textContent = `Hello, ${data.user.email}!`; // Display the email
+            } else {
+                console.error('Failed to fetch user details:', data.message);
+                redirectToLogin(); // Redirect if unauthorized
+            }
+        } catch (error) {
+            console.error('Error fetching user details:', error);
+            redirectToLogin(); // Redirect if there's an error fetching details
+        }
+    }
+
         // Toggle dark mode
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
