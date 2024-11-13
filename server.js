@@ -246,7 +246,7 @@ app.post('/login', loginLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Email does not exist.' });
         }
 
-        // Check if account is locked
+        // Check if account is locked and if lock period has expired
         if (user.accountLockedUntil && user.accountLockedUntil > new Date()) {
             // Convert accountLockedUntil (UTC) to PHT
             const lockedUntilPHT = user.accountLockedUntil.toLocaleString('en-US', { timeZone: 'Asia/Manila' });
@@ -255,6 +255,14 @@ app.post('/login', loginLimiter, async (req, res) => {
                 success: false,
                 message: `Your account is locked until ${lockedUntilPHT}. Please try again later.`
             });
+        }
+
+        // If account is locked but the lock time has passed, reset login attempts
+        if (user.accountLockedUntil && user.accountLockedUntil <= new Date()) {
+            // Reset invalid login attempts and account lock
+            user.invalidLoginAttempts = 0;
+            user.accountLockedUntil = null; // Unlock account
+            await user.save(); // Save the updated user (reset attempts and lock)
         }
 
         // Check if password is correct
