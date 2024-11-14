@@ -7,32 +7,22 @@ body {
     padding: 0;
     color: #f0e68c;
     text-shadow: 1px 1px #2f4f4f;
-    animation: moveBackground 30s linear infinite; /* Add background animation */
+    animation: backgroundAnimation 30s linear infinite;
     background-attachment: fixed;
-    background-position: center center;
     height: 100vh;
 }
 
-/* Background animation */
-@keyframes moveBackground {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: -500px -500px;
-    }
+/* Keyframe animation for background */
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 0%; }
 }
 
-/* Drop down animation for content */
-@keyframes dropIn {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* Animation for a smooth entry */
+@keyframes slideIn {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 /* Header styling with drop-in animation */
@@ -42,25 +32,17 @@ body {
     right: 0;
     z-index: 10;
     text-align: center;
-    padding: 40px 20px;
-    background-color: rgba(34, 139, 34, 0.9); /* Slightly transparent for visibility */
+    padding: 5px;
     color: #f0e68c;
-    border: 3px solid #8b4513;
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Stronger shadow for better effect */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow to separate from content */
-    width: 80%;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0 auto;
-    animation: dropIn 1.5s ease-out; /* Apply drop-in animation to the header */
+    animation: slideIn 1.5s ease-out;
 }
 
 /* Header content */
 .header h1 {
-    font-size: 4em;
+    font-size: 50px;
     margin: 0;
 }
 
@@ -72,23 +54,22 @@ body {
 .signup-container {
     text-align: center;
     background-color: rgba(34, 139, 34, 0.5);
-    padding: 30px;
+    padding: 10px;
     border: 2px solid #8b4513;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Enhance the shadow */
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
     width: 100%;
-    max-width: 450px;
-    margin: 100px auto 20px auto; /* Adjust for header overlap */
-    animation: dropIn 1.5s ease-out; /* Apply drop-down animation */
+    max-width: 400px; /* Consistent width with the login form */
+    margin: 20px auto 20px auto;
+    animation: slideIn 1.5s ease-out;
 }
 
 /* Form heading inside the container */
 .signup-container h3 {
     color: #f0e68c;
-    font-size: 1.8em;
-    margin-bottom: 20px;
+    font-size: 1.5 em;
+    margin-bottom: 2px;
 }
-
 
 /* Form styling */
 #signupForm {
@@ -98,6 +79,7 @@ body {
     font-weight: bold;
 }
 
+/* Label styling */
 label {
     font-size: 1em;
     color: #f5deb3;
@@ -108,17 +90,19 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 90%;
-    padding: 12px;
-    margin: 8px 0;
+    width: 320px; /* Matching width with the login form */
+    padding: 8px;
+    margin: 5px 0;
     border: 2px solid #8b4513;
     border-radius: 5px;
     background-color: #f5deb3;
     color: #333;
     font-size: 1em;
+    box-sizing: border-box;
     transition: none;
 }
 
+/* Prevent autofill background color from changing */
 input[type="email"]:-webkit-autofill,
 input[type="text"]:-webkit-autofill,
 input[type="password"]:-webkit-autofill {
@@ -130,14 +114,14 @@ input[type="password"]:-webkit-autofill {
 
 /* Button styling */
 button {
-    background-color: #228b22; 
+    background-color: #228b22;
     color: #f0e68c;
-    padding: 12px;
+    padding: 8px;
     border: none;
     border-radius: 5px;
-    width: 100%;
+    width: 320px; /* Same width as input fields */
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     margin-top: 15px;
 }
@@ -149,7 +133,7 @@ button:hover {
 /* Password container */
 .password-container {
     position: relative;
-    width: 90%;
+    width: 320px; /* Consistent width with inputs and button */
     margin: 0 auto;
 }
 

@@ -3,119 +3,97 @@ body {
     font-family: 'Minecraftia', sans-serif;
     background-image: url('images/minecraft.jpg');
     background-size: cover;
-    margin: 0;
-    padding: 0;
     color: #f0e68c;
-    text-shadow: 1px 1px #2f4f4f;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
     background-attachment: fixed;
     background-position: center center;
     animation: backgroundAnimation 30s ease infinite;
     text-align: center;
+    
 }
 
+h1{
+    font-size:50px;
+    margin:0px;
+}
+h2{ 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+p{
+    color:#f5deb3
+}
 /* Keyframe animation for background */
 @keyframes backgroundAnimation {
     0% { background-position: 0% 0%; }
     100% { background-position: 100% 100%; }
 }
 
-/* Header Styling */
-header {
-    text-align: center;
-    padding: 10px 10px;  /* Increased padding for more spacing */
-    background-color: rgba(34, 139, 34, 0.9);
-    color: #f0e68c;
-    border: 3px solid #8b4513;
-    font-weight: bold;
-    animation: slideIn 1s ease-out;
-}
-
-/* Larger font for the main title */
-header h1 {
-    font-size: 5em; /* Very large size */
-    margin: 0;
-    color: #f0e68c; /* Vibrant color */
-    text-shadow: 8px 8px 30px rgba(0, 0, 0, 0.8); /* Dramatic shadow for effect */
-    font-family: 'Minecraftia', sans-serif;
-    letter-spacing: 5px;
-}
-
-/* Subheader styling */
-header p {
-    font-size: 2.5em; /* Large font for subheading */
-    margin-top: 20px;
-    font-weight: bold;
-    color: #f0e68c;
-    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
-}
-
-
-/* Animation for a smooth entry */
-@keyframes slideIn {
-    from { transform: translateY(-100px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Main content */
-.content {
+/* Main container with Flexbox */
+.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 20px;
-    max-width: 100%;
     width: 100%;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Welcome section */
+/* Left side (Welcome section) */
 .welcome-section {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.7);
+    text-align:center;
+    background-color: rgba(34, 139, 34, 0.5);
     padding: 30px;
-    border: 2px solid #8b4513;
     border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    width: 45%;
+    margin-right: 5%;
+    border: 2px solid #8b4513;
+    
 }
 
-/* Larger welcome header */
 .welcome-section h2 {
-    font-size: 3.2em; /* Larger font size */
-    color: #000000;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    font-size: 2em;
+    color: #f0e68c;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
 }
 
-/* Welcome section paragraph */
 .welcome-section p {
-    font-size: 1.8em;
-    color: #333;
+    font-size: 1.4em;
+    color: #f5deb3;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+    
 }
 
-/* Login section */
+/* Right side (Login section) */
 .login-section {
     text-align: center;
     background-color: rgba(34, 139, 34, 0.5);
-    padding: 30px;
+    padding: 20px;
     border: 2px solid #8b4513;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 45%;
     animation: slideIn 1s ease-out;
 }
 
 .login-section h2 {
     color: #f0e68c;
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
+
+/* Additional form and input styles remain unchanged */
+
 
 /* Form styling */
 #loginForm {
@@ -127,7 +105,7 @@ header p {
 
 /* Label styling */
 label {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #f5deb3;
     font-weight: bold;
     margin-bottom: 10px;
@@ -138,16 +116,16 @@ input[type="email"],
 input[type="password"],
 input[type="text"] {
     width: 90%;
-    padding: 12px;
-    margin: 12px 0;
+    max-width: 320px; /* Sets a uniform maximum width */
+    padding: 8px;
+    margin: 5px 0;
     border: 2px solid #8b4513;
-    border-radius: 4px;
+    border-radius: 5px;
     background-color: #f5deb3;
     color: #333;
-    font-size: 1.1em;
+    font-size: 1em;
     box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-weight: bold;
 }
 
 /* Input hover effect */
@@ -177,21 +155,40 @@ input[type="text"]:focus {
     outline: none;
 }
 
+/* Input styling */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 320px; /* Fixed width to make inputs the same size */
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid #8b4513;
+    border-radius: 4px;
+    background-color: #f5deb3;
+    color: #333;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+}
+
 /* Password container */
 .password-container {
     position: relative;
-    width: 90%;
+    width: 320px; /* Ensure same width as other input fields */
     margin: 0 auto;
 }
 
-.password-container input {
-    padding-right: 40px;
+.password-container input[type="password"] {
+    width: 100%; /* Full width within the container */
+    padding-right: 40px; /* Adjust for icon space */
 }
+
 
 /* Icon for password toggle */
 .password-container i {
     position: absolute;
-    right: 25px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -202,29 +199,26 @@ input[type="text"]:focus {
 button {
     background-color: #228b22;
     color: #f0e68c;
-    padding: 14px;
+    padding: 8px;
     border: none;
-    border-radius: 4px;
-    width: 100%;
+    border-radius: 5px;
+    width: 320px; /* Same width as input fields */
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 button:hover {
-    background-color: #228b22;
-    transform: scale(1.05);
+    background-color: #32cd32;
 }
-
 /* Form links */
 .form-links a {
     display: inline-block;
     margin-top: 10px;
     color: #87ceeb;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 0.9em;
     font-weight: bold;
 }
 
@@ -260,4 +254,3 @@ button:hover {
     from { transform: translateY(-50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
-
