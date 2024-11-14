@@ -300,13 +300,6 @@ app.post('/login', loginLimiter, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 3c587f0b4508ec55688915c8336199d4d75b735b
 app.post('/logout', (req, res) => {
     if (req.session) {
         req.session.destroy((err) => {
