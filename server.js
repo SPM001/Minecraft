@@ -13,7 +13,7 @@ const helmet = require('helmet');
 const validator = require('validator');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.set('trust proxy', 1);
 
@@ -302,6 +302,11 @@ app.post('/login', loginLimiter, async (req, res) => {
 });
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3c587f0b4508ec55688915c8336199d4d75b735b
 app.post('/logout', (req, res) => {
     if (req.session) {
         req.session.destroy((err) => {
